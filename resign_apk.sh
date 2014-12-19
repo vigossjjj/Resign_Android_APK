@@ -13,6 +13,10 @@ APK_NAME=`echo ${APK} | awk -F ".apk" '{print $1}'`
 APKTOOL=./apktool/apktool.jar
 DECOMPILE_PATH=./${APK_NAME}
 
+if [ ! -e ./resigned_apks ]; then
+	mkdir resigned_apks
+fi
+
 echo "反编译APK包..."
 java -jar $APKTOOL d -r -s -f $1 $APK_NAME
 

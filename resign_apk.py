@@ -21,8 +21,13 @@ DECOMPILE_PATH = APK[:-4]
 APK_NAME=DECODE_FOLDER=(os.path.basename(APK)).split(".apk")[0]
 APKTOOL = os.path.join(CurrentDIR,"apktool","apktool.jar")
 # ZIPALIGN = os.path.join(CurrentDIR,"apktool","zipalign")
+RESIGNED_FOLDER = os.path.join(CurrentDIR,"resigned_apks")
 
 if __name__ == '__main__':
+
+	if not os.path.exists(RESIGNED_FOLDER):
+		os.makedirs(RESIGNED_FOLDER)
+
 	print "反编译APK包..."
 	#反编译
 	DECOMPILE_CMD="java -jar "+APKTOOL+" d -r -s -f "+APK+" "+DECOMPILE_PATH
